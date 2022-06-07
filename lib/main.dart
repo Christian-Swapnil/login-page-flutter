@@ -4,15 +4,17 @@ import 'package:login/loginpage.dart';
 import 'package:login/register.dart';
 
 
-void main() {
+void main()  {
+ 
+
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     initialRoute: 'loginpage',
-    routes: 
-    {
-    'loginpage':(context)=>MyLogin(),
-    'register':(context) => MyRegister(),
-    'index':(context) => index()
+    routes: {
+      'loginpage': (context) => MyLogin(),
+      'register': (context) => MyRegister(),
+      'index': (context) => index(),
+      
     },
   ));
 }

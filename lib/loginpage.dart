@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login/index.dart';
 
 class MyLogin extends StatefulWidget {
   const MyLogin({Key? key}) : super(key: key);
@@ -12,7 +13,7 @@ class _MyLoginState extends State<MyLogin> {
 
   void validate() {
     if (formkey.currentState!.validate()) {
-      print("ok");
+      Navigator.pushNamed(context, 'index');
     } else {
       print("Error");
     }
@@ -23,7 +24,7 @@ class _MyLoginState extends State<MyLogin> {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('images/signup_bg.jpg'), fit: BoxFit.cover),
+            image: AssetImage('images/login_bg.jpg'), fit: BoxFit.cover),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -36,7 +37,7 @@ class _MyLoginState extends State<MyLogin> {
                 style: TextStyle(
                     fontSize: 40,
                     fontWeight: FontWeight.w700,
-                    color: Colors.white),
+                    color: Colors.black),
               ),
             ),
             SingleChildScrollView(
@@ -54,7 +55,7 @@ class _MyLoginState extends State<MyLogin> {
                         decoration: InputDecoration(
                             fillColor: Colors.white54,
                             filled: true,
-                            hintText: 'Email',
+                            labelText: 'Email',
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10))),
                         validator: (val) {
@@ -70,14 +71,22 @@ class _MyLoginState extends State<MyLogin> {
                       SizedBox(
                         height: 30,
                       ),
-                      TextField(
+                      TextFormField(
                         obscureText: true,
                         decoration: InputDecoration(
                             fillColor: Colors.white54,
                             filled: true,
-                            hintText: 'Password',
+                            labelText: 'Password',
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10))),
+                              borderRadius: BorderRadius.circular(10),
+                            )),
+                        validator: (val) {
+                          if (val!.isEmpty) {
+                            return "Required *";
+                          } else {
+                            return null;
+                          }
+                        },
                       ),
                       SizedBox(
                         height: 40,
@@ -94,7 +103,7 @@ class _MyLoginState extends State<MyLogin> {
                           ),
                           CircleAvatar(
                             radius: 30,
-                            backgroundColor: Colors.white12,
+                            backgroundColor: Colors.black,
                             child: IconButton(
                               color: Colors.white,
                               onPressed: validate,
