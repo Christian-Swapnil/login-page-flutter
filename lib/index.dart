@@ -61,5 +61,7 @@ class _indexState extends State<index> {
 class User {
   final String name, username, email ;
 
-  User(this.name, this.username,  this.email);
+  User(this.name, this.username, this.email);
+
+ 
 }
